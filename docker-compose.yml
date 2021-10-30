@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    web:
+        container_name: ${DOCKER_NAME}_web
+        build:
+            context: .
+            args:
+                user: ${USER}
+                uid: ${UID}
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/app
+        depends_on:
+            - database_server
+    database_server:
+        container_name: ${DOCKER_NAME}_database
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        restart: always
+        volumes:
+            - ./storage/app/mysql:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=log-time-status-app
+            - MYSQL_ROOT_PASSWORD=root
+            - SERVICE_NAME=mysql
+    phpmyadmin:
+        container_name: ${DOCKER_NAME}_phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        ports:
+            - "8080:80"
+        depends_on:
+             - database_server
+        environment:
+            PMA_HOST: database_server
+            PMA_PORT: 3306
+            PMA_USER: root
+            PMA_PASSWORD: root
