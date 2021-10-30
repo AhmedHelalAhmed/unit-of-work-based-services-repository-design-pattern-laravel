@@ -9,21 +9,26 @@
 
 ## About Laravel
 
-
 ### Project goal
+
 This application for unit of work and repository design patterns also command and service approach on top of laravel
 
 ### Project idea
-Web application that create tags and links then search, filter and view them. 
+
+Web application that create tags and links then search, filter and view them.
 
 ## Business case
+
 - ### Scenario 1:
-  - business required no tag created without links and links may be attached to a tag.
+    - business required no tag created without links and links may be attached to a tag.
 - ### Scenario 2:
-  - links must attach to tag.
+    - links must attach to tag.
 
-
-    
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Resources
+
+- [Building Great Software with the Repository Pattern in Laravel](https://medium.com/thinkcru/laravel-ioc-and-the-repository-pattern-a6faac7c889b)
+- [Basic unit-of-work for Laravel](https://gist.github.com/iarafat/0b4672ba1e1edaa8c1d84379e7e37523)
