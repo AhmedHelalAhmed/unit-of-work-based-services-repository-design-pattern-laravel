@@ -23,7 +23,7 @@ services:
         volumes:
             - ./storage/app/mysql:/var/lib/mysql
         environment:
-            - MYSQL_DATABASE=log-time-status-app
+            - MYSQL_DATABASE=unit-of-work-based-services-repository-design-pattern-laravel
             - MYSQL_ROOT_PASSWORD=root
             - SERVICE_NAME=mysql
     phpmyadmin:

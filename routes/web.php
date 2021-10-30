@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\V1\TagController as TagControllerV1;
+use App\Http\Controllers\V2\TagController as TagControllerV2;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/v1/tags', [TagControllerV1::class, 'store'])->name('v1.tags.store');
+Route::post('/v2/tags', [TagControllerV2::class, 'store'])->name('v2.tags.store');
