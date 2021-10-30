@@ -32,7 +32,7 @@ class TagControllerTest extends TestCase
             ]
         ]);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $this->assertDatabaseCount('tags', 0);
         $this->assertDatabaseCount('links', 2);
     }
@@ -67,7 +67,7 @@ class TagControllerTest extends TestCase
      */
     public function it_store_tag_nor_links()
     {
-        $this->postJson(route('v2.tags.store'), [
+        $response = $this->postJson(route('v2.tags.store'), [
             'title' => 'ahmed',
             'links' => [
                 [
@@ -80,6 +80,8 @@ class TagControllerTest extends TestCase
                 ]
             ]
         ]);
+
+        $response->assertOk();
 
         $this->assertDatabaseCount('tags', 1);
         $this->assertDatabaseCount('links', 2);
