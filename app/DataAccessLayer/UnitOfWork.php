@@ -17,15 +17,19 @@ class UnitOfWork
         }
     }
 
+    /**
+     * @throws \Throwable
+     */
     protected function rollback()
     {
         if (!$this->inTransaction) {
             return $this;
         }
         // TODO investigate on this
-        // DB::rollBack();// Illuminate\Contracts\Container\BindingResolutionException
-        $this->inTransaction = false;
         static::$runningTransactions--;
+        $this->inTransaction = false;
+        throw_if(!$this->inTransaction, 'Rollback');// to force rollback
+        // DB::rollBack();// Illuminate\Contracts\Container\BindingResolutionException
 
         return $this;
     }
